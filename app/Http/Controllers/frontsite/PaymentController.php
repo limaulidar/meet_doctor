@@ -3,10 +3,45 @@
 namespace App\Http\Controllers\Frontsite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+
+//user library here
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+
+//user everything here
+// use Gate;
+use Auth;
+
+
+//use model here
+use App\Models\User;
+use App\Models\Operational\Doctor;
+use App\Models\Operational\Appointment;
+use App\Models\Operational\Transaction;
+use App\Models\MasterData\Consultation;
+use App\Models\MasterData\ConfigPayment;
+use App\Models\MasterData\Specialist;
+
+//thirdparty package
+
 
 class PaymentController extends Controller
 {
+
+    /**
+     * create a new controller instance
+     * 
+     * @return void
+     */
+
+    public function __construct ()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
